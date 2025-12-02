@@ -1,0 +1,27 @@
+import { Component } from '@angular/core';
+import { IonicModule } from '@ionic/angular';
+import { FormsModule } from '@angular/forms';
+import { RouterModule, Router } from '@angular/router';
+
+@Component({
+  selector: 'app-login',
+  standalone: true,
+  imports: [IonicModule, FormsModule, RouterModule],
+  templateUrl: './login.page.html',
+  styleUrls: ['./login.page.scss'],
+})
+export class LoginPage {
+  email = '';
+  password = '';
+
+  constructor(private router: Router) {}
+
+  login() {
+    // Aquí luego pones Firebase, API, etc.
+    console.log('Email:', this.email);
+    console.log('Password:', this.password);
+
+    // Por ahora, navegar a Home
+    this.router.navigate(['/home']);
+  }
+}

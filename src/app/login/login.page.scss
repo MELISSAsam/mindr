@@ -1,0 +1,26 @@
+.header {
+  text-align: center;
+  margin-top: 40px;
+
+  .logo {
+    width: 130px;
+    margin-bottom: 20px;
+  }
+
+  h2 {
+    font-weight: 700;
+    margin-bottom: 5px;
+  }
+
+  p {
+    color: #666;
+    font-size: 14px;
+  }
+}
+
+.btn-login {
+  margin-top: 40px;
+  --background: #8c52ff; // púrpura elegante
+  --background-hover: #7a3fe0;
+  --border-radius: 50px;
+}

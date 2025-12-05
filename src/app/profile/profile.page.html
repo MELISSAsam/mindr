@@ -1,13 +1,231 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>profile</ion-title>
-  </ion-toolbar>
-</ion-header>
+<ion-content class="ion-padding profile-page">
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">profile</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <div class="profile-shell">
+
+    <!-- =======================
+         AVATAR + NOMBRE (CARD 1)
+         ======================= -->
+    <div class="profile-card avatar-card">
+
+      <!-- FOTO Y BOTÓN DE CÁMARA -->
+      <div class="avatar-wrap">
+        <div class="avatar-frame">
+          <img *ngIf="avatarPreview; else initialsTpl" [src]="avatarPreview" alt="Avatar">
+
+          <ng-template #initialsTpl>
+            <div class="initials">{{ initials }}</div>
+          </ng-template>
+        </div>
+
+        <button class="camera-btn" (click)="selectAvatar()">
+          📷
+        </button>
+      </div>
+
+      <!-- NOMBRE + EDAD + INSTITUCIÓN -->
+      <div class="name-row">
+        <div class="title">
+          {{ fullName }} <span *ngIf="age">, {{ age }}</span>
+        </div>
+        <div class="subtitle">{{ institution }}</div>
+        <div
+          class="role-pill"
+          [class.tutor]="role === 'tutor'"
+          [class.estudiante]="role === 'estudiante'"
+        >
+          {{ role | titlecase }}
+        </div>
+      </div>
+
+      <!-- ACCIONES DE FOTO -->
+      <div class="card-actions">
+        <ion-button fill="clear" (click)="removeAvatar()">
+          Eliminar foto
+        </ion-button>
+      </div>
+
+    </div>
+
+    <!-- =======================
+         DATOS DEL PERFIL (CARD 2)
+         ======================= -->
+    <div class="profile-card details-card">
+
+      <form (submit)="$event.preventDefault(); saveProfile()">
+
+        <!-- Nombre + Edad -->
+        <div class="field-grid">
+          <ion-item>
+            <ion-label position="stacked">Nombre completo *</ion-label>
+            <ion-input [(ngModel)]="fullName" name="fullName"></ion-input>
+          </ion-item>
+
+          <ion-item>
+            <ion-label position="stacked">Edad</ion-label>
+            <ion-input type="number" [(ngModel)]="age" name="age"></ion-input>
+          </ion-item>
+        </div>
+
+        <!-- Biografía -->
+        <ion-item>
+          <ion-label position="stacked">Biografía *</ion-label>
+          <ion-textarea rows="4" [(ngModel)]="bio" name="bio"></ion-textarea>
+        </ion-item>
+
+        <!-- Materias -->
+        <div class="section-title">Materias *</div>
+        <div class="tagbox">
+          <div class="tag" *ngFor="let s of subjects; let i = index">
+            {{ s }}
+            <button type="button" (click)="removeSubject(i)">✕</button>
+          </div>
+
+          <input
+            placeholder="Agregar materia (Enter)"
+            (keyup.enter)="addSubject($event)"
+          >
+        </div>
+
+        <!-- Nivel + Experiencia -->
+        <div class="small-grid">
+          <ion-item>
+            <ion-label position="stacked">Nivel</ion-label>
+            <ion-select [(ngModel)]="level" name="level">
+              <ion-select-option value="basico">Básico</ion-select-option>
+              <ion-select-option value="intermedio">Intermedio</ion-select-option>
+              <ion-select-option value="avanzado">Avanzado</ion-select-option>
+              <ion-select-option value="refuerzo">Refuerzo escolar</ion-select-option>
+              <ion-select-option value="examenes">Preparación a exámenes</ion-select-option>
+            </ion-select>
+          </ion-item>
+
+          <ion-item>
+            <ion-label position="stacked">Años de experiencia</ion-label>
+            <ion-input
+              type="number"
+              [(ngModel)]="experienceYears"
+              name="experienceYears"
+            ></ion-input>
+          </ion-item>
+        </div>
+
+        <!-- Disponibilidad -->
+        <div class="section-title">Disponibilidad *</div>
+        <div class="days-grid">
+          <div
+            class="day"
+            *ngFor="let d of allDays"
+            [class.active]="availableDays.includes(d)"
+            (click)="toggleDay(d)"
+          >
+            {{ d.substring(0,3) }}
+          </div>
+        </div>
+
+        <!-- Horarios -->
+        <div class="time-grid">
+          <ion-item>
+            <ion-label position="stacked">Desde</ion-label>
+            <ion-input type="time" [(ngModel)]="fromTime" name="fromTime"></ion-input>
+          </ion-item>
+
+          <ion-item>
+            <ion-label position="stacked">Hasta</ion-label>
+            <ion-input type="time" [(ngModel)]="toTime" name="toTime"></ion-input>
+          </ion-item>
+        </div>
+
+        <!-- Ubicación -->
+        <ion-item>
+          <ion-label position="stacked">Ubicación</ion-label>
+          <ion-input [(ngModel)]="location" name="location"></ion-input>
+        </ion-item>
+
+        <!-- Modalidad -->
+        <div class="section-title">Modalidad</div>
+        <div class="role-selector">
+          <div
+            class="role-card"
+            [class.active]="modality === 'online'"
+            (click)="modality = 'online'"
+          >
+            Online
+          </div>
+          <div
+            class="role-card"
+            [class.active]="modality === 'presencial'"
+            (click)="modality = 'presencial'"
+          >
+            Presencial
+          </div>
+          <div
+            class="role-card"
+            [class.active]="modality === 'hibrido'"
+            (click)="modality = 'hibrido'"
+          >
+            Híbrido
+          </div>
+        </div>
+
+        <!-- Precio -->
+        <ion-item>
+          <ion-label position="stacked">Tarifa por hora (USD)</ion-label>
+          <ion-input type="number" [(ngModel)]="price" name="price"></ion-input>
+        </ion-item>
+
+        <!-- Idiomas -->
+        <div class="section-title">Idiomas</div>
+        <div class="tagbox">
+          <div class="tag" *ngFor="let l of languages; let i = index">
+            {{ l }}
+            <button type="button" (click)="removeLanguage(i)">✕</button>
+          </div>
+
+          <input
+            placeholder="Añadir idioma (Enter)"
+            (keyup.enter)="addLanguage($event)"
+          >
+        </div>
+
+        <!-- Enlaces -->
+        <ion-item>
+          <ion-label position="stacked">Enlaces</ion-label>
+          <ion-input [(ngModel)]="links" name="links" placeholder="https://..."></ion-input>
+        </ion-item>
+
+        <!-- BOTONES -->
+        <div class="form-actions">
+          <ion-button fill="outline" (click)="resetForm()">
+            Restablecer
+          </ion-button>
+
+          <ion-button id="saveBtn" (click)="saveProfile()">
+            Guardar
+          </ion-button>
+        </div>
+
+        <!-- MENSAJE -->
+        <div
+          id="formMsg"
+          [class.success]="formStatus === 'success'"
+          [class.error]="formStatus === 'error'"
+        >
+          {{ formMessage }}
+        </div>
+
+      </form>
+
+    </div>
+
+  </div>
+
+  <!-- INPUT HIDDEN PARA LA FOTO -->
+  <input
+    id="avatarInput"
+    type="file"
+    accept="image/*"
+    hidden
+    (change)="onAvatarSelected($event)"
+  >
+
 </ion-content>

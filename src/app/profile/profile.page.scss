@@ -1,0 +1,251 @@
+ion-item {
+  --background: #ffffff !important;
+  --color: #4a4a4a !important;
+  --border-radius: 18px;
+  --padding-start: 14px;
+  --padding-end: 14px;
+  margin-bottom: 14px;
+  border-radius: 18px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+}
+
+ion-input,
+ion-textarea {
+  --background: transparent !important;
+  --color: #4a4a4a !important;
+  font-size: 16px;
+}
+
+ion-label {
+  color: #6b5d8d !important;
+  font-weight: 600;
+}
+.tabs-container {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 18px;
+}
+
+.tab-btn {
+  flex: 1;
+  text-align: center;
+  padding: 12px 0;
+  border-radius: 18px;
+  font-weight: 600;
+  background: #e6dafb;
+  color: #5a4f70;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.tab-btn.active {
+  background: #d8c7ff;
+  color: #521aca;
+  transform: scale(1.05);
+}
+
+.profile-shell {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.profile-card {
+  background: white;
+  border-radius: 24px;
+  padding: 24px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+  animation: fadeIn 0.4s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.avatar-card {
+  text-align: center;
+}
+
+.avatar-wrap {
+  position: relative;
+  width: 130px;
+  margin: auto;
+}
+
+.avatar-frame {
+  width: 130px;
+  height: 130px;
+  border-radius: 50%;
+  background: #ffe9a8;
+  overflow: hidden;
+  border: 4px solid #ffdfa8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 40px;
+  font-weight: 700;
+  color: #8b6f2f;
+}
+
+.camera-btn {
+  position: absolute;
+  bottom: -6px;
+  right: -6px;
+  border: none;
+  background: #ffb3c1;
+  color: #70323e;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  font-size: 20px;
+  display: grid;
+  place-items: center;
+  box-shadow: 0 4px 12px rgba(255, 253, 253, 0.2);
+  transition: 0.2s;
+}
+
+.camera-btn:hover {
+  transform: scale(1.1);
+}
+
+.name-row .title {
+  font-size: 22px;
+  font-weight: 700;
+  margin-top: 16px;
+}
+
+.name-row .subtitle {
+  font-size: 15px;
+  color: #6c6c6c;
+}
+
+.role-pill {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 7px 16px;
+  border-radius: 20px;
+  color: white;
+  font-weight: 600;
+}
+
+.role-pill.tutor {
+  background: #a3d8ff;
+}
+
+.role-pill.estudiante {
+  background: #b8f3d1;
+}
+
+.tagbox {
+  background: #f0e7ff;
+  padding: 12px;
+  border-radius: 16px;
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.tag {
+  background: #ffb3c1;
+  padding: 6px 14px;
+  border-radius: 18px;
+  color: white;
+  font-size: 13px;
+  display: flex;
+  gap: 6px;
+  align-items: center;
+}
+
+.tag button {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(255,255,255,0.4);
+  color: white;
+}
+
+.tagbox input {
+  background: transparent;
+  border: none;
+  outline: none;
+}
+
+.days-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 10px;
+}
+
+.day {
+  background: #ffe9a8;
+  padding: 10px 0;
+  border-radius: 14px;
+  text-align: center;
+  font-weight: 600;
+  transition: 0.2s;
+  cursor: pointer;
+}
+
+.day.active {
+  background: #ffb3c1;
+  color: white;
+  transform: scale(1.07);
+}
+
+.role-selector {
+  display: flex;
+  gap: 10px;
+  margin-top: 12px;
+}
+
+.role-card {
+  flex: 1;
+  background: #d8c7ff;
+  padding: 14px 0;
+  text-align: center;
+  border-radius: 16px;
+  font-weight: 600;
+  color: #4a3f62;
+  transition: 0.2s;
+  cursor: pointer;
+}
+
+.role-card.active {
+  background: #a3d8ff;
+  color: #1b395f;
+  transform: scale(1.05);
+}
+
+.form-actions {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+ion-button {
+  --border-radius: 16px;
+  --padding-start: 20px;
+  --padding-end: 20px;
+  font-size: 15px;
+  font-weight: 700;
+}
+
+#formMsg {
+  margin-top: 14px;
+  padding: 12px;
+  border-radius: 14px;
+  text-align: center;
+  font-weight: 600;
+}
+
+#formMsg.success {
+  background: #b8f3d14d;
+  color: #1a6a42;
+}
+
+#formMsg.error {
+  background: #ffb3c14a;
+  color: #731d2b;
+}

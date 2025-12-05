@@ -1,52 +1,84 @@
-.title-home {
-  font-weight: 700;
-  text-align: center;
-}
-
-.section-title {
-  font-weight: 700;
-  margin-bottom: 20px;
-  text-align: left;
-  color: #333;
-}
-
-.card-list {
+ion-content {
+  --background: #eaddff; /* morado pastel */
   display: flex;
   flex-direction: column;
-  gap: 25px;
 }
 
+/* CARD */
 .profile-card {
-  background: #fff;
-  border-radius: 20px;
-  padding: 15px;
-  box-shadow: 0 4px 14px rgba(0,0,0,0.1);
+  margin: 20px;
+  background: #ffffff;
+  border-radius: 26px;
+  box-shadow: 0 12px 32px rgba(0,0,0,0.12);
+  overflow: hidden;
 }
 
+/* IMAGEN */
 .profile-img {
   width: 100%;
-  border-radius: 18px;
+  height: 380px;
   object-fit: cover;
-  height: 260px;
 }
 
-.profile-info {
-  margin-top: 12px;
-
-  h3 {
-    margin: 0;
-    font-weight: 700;
-  }
-
-  p {
-    color: #666;
-    font-size: 14px;
-  }
+/* INFO DEL PERFIL */
+.info {
+  padding: 20px;
 }
 
-.btn-purple {
-  margin-top: 15px;
-  --background: #8c52ff;
-  --background-hover: #7a3fe0;
-  --border-radius: 50px;
+.info h2 {
+  font-weight: 700;
+  font-size: 22px;
+  margin-bottom: 8px;
+}
+
+.info p {
+  font-size: 15px;
+  color: #555;
+  line-height: 1.45;
+}
+
+/* BOTONES */
+.actions {
+  margin: 30px 0 20px;
+  display: flex;
+  justify-content: center;
+  gap: 50px;
+}
+
+.btn {
+  width: 78px;
+  height: 78px;
+  background: #ffffff;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+  transition: transform 0.15s ease;
+}
+
+.btn ion-icon {
+  font-size: 38px;
+}
+
+/* X roja */
+.action-no ion-icon {
+  color: #ff4f4f;
+}
+
+/* Check verde */
+.action-yes ion-icon {
+  color: #4cd964;
+}
+
+.btn:active {
+  transform: scale(0.85);
+}
+
+/* TABS */
+ion-tab-bar {
+  --background: #ffffff;
+  --color: #7d35ff; /* morado más vivo */
+  border-radius: 20px 20px 0 0;
 }

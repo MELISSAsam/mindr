@@ -1,34 +1,60 @@
 <ion-header>
-  <ion-toolbar color="light">
-    <ion-title class="title-home">MIDR</ion-title>
+  <ion-toolbar>
+    <ion-title>Perfil</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content class="ion-padding">
+<ion-content>
 
-  <h2 class="section-title">Recomendadas para ti 💜</h2>
+  <div class="card-wrapper">
 
-  <div class="card-list">
+    <div class="profile-card">
 
-    <div class="profile-card" *ngFor="let p of profiles">
+      <img src="assets/icon/AnthonySagaby.png" class="profile-img" />
 
-      <img [src]="p.img" class="profile-img" />
-
-      <div class="profile-info">
-        <h3>{{ p.name }}</h3>
-        <p>{{ p.bio }}</p>
+      <div class="info">
+        <h2>Anthony, 22</h2>
+        <p class="role">Desarrollador - Ecuador</p>
+        <p class="bio">
+          Amante de los gatos, los videojuegos retro y la lectura nocturna.
+          Me gusta aprender cosas nuevas todos los días.
+        </p>
       </div>
-
-      <ion-button
-        expand="block"
-        shape="round"
-        class="btn-purple"
-      >
-        Ver perfil
-      </ion-button>
 
     </div>
 
-  </div>
+    <!-- BOTONES EXACTAMENTE AL NIVEL PERFECTO -->
+    <div class="actions">
+  <button class="btn action-no" (click)="rechazar()">
+    <ion-icon name="close"></ion-icon>
+  </button>
 
-</ion-content>
+  <button class="btn action-yes" (click)="aceptar()">
+    <ion-icon name="checkmark"></ion-icon>
+  </button>
+</div>
+
+
+
+
+
+
+<!-- TABS -->
+<ion-tabs>
+  <ion-tab-bar slot="bottom">
+    <ion-tab-button tab="home">
+      <ion-icon name="home-outline"></ion-icon>
+      <ion-label>Home</ion-label>
+    </ion-tab-button>
+
+    <ion-tab-button tab="profile">
+      <ion-icon name="person-circle-outline"></ion-icon>
+      <ion-label>Perfil</ion-label>
+    </ion-tab-button>
+
+    <ion-tab-button tab="settings">
+      <ion-icon name="settings-outline"></ion-icon>
+      <ion-label>Ajustes</ion-label>
+    </ion-tab-button>
+  </ion-tab-bar>
+</ion-tabs>
